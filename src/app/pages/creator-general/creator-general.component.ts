@@ -17,6 +17,7 @@ export class CreatorGeneralComponent implements OnInit {
       this.fb.control('', Validators.required)
     ])
   })
+  
 
   get questions() {
     return this.questionsModel.get('questionList') as FormArray 

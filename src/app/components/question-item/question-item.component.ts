@@ -52,13 +52,16 @@ export class QuestionItemComponent implements OnInit {
   }
 
   onSelectCorrectAns(index) {
-    console.log(index)
-    this.correctAnswers.push(index)
-    this.userProfile.patchValue({
-      correctAns: this.correctAnswers
-    })
+    if(!this.correctAnswers.includes(index)) {
 
-    this.selectQuestionType()
+      console.log(index)
+      this.correctAnswers.push(index)
+      this.userProfile.patchValue({
+        correctAns: this.correctAnswers
+      })
+      
+      this.selectQuestionType()
+    }
 
     // console.log(this.options.at(index), 'hello')
     // let tempVal = this.options.at(index)
