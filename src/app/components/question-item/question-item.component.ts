@@ -9,12 +9,14 @@ import { Validators } from '@angular/forms'
 export class QuestionItemComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
   public questionTypes = ['multiple answers', 'one answer']
+  public correctAnswers = []
   userProfile = this.fb.group({
     firstName: ['', Validators.required],
     questionType: ['', Validators.required],
     options: this.fb.array([
       this.fb.control('', Validators.required)
-    ])
+    ]),
+    correctAns: []
   })
 
   ngOnInit(): void {
@@ -28,14 +30,41 @@ export class QuestionItemComponent implements OnInit {
   }
 
   onDeleteOption(index) {
-    if(this.options.length > 1)
+    if (this.options.length > 1)
       this.options.removeAt(index)
+
+    let _index = this.correctAnswers.indexOf(index);
+    if (_index > -1) this.correctAnswers.splice(_index, 1);
+    // console.log(this.correctAnswers)
+    this.selectQuestionType()
+  }
+
+  selectQuestionType() {
+    if (this.correctAnswers.length > 1) {
+      this.userProfile.patchValue({
+        questionType: this.questionTypes[0]
+      })
+    } else {
+      this.userProfile.patchValue({
+        questionType: this.questionTypes[1]
+      })
+    }
   }
 
   onSelectCorrectAns(index) {
     console.log(index)
+    this.correctAnswers.push(index)
+    this.userProfile.patchValue({
+      correctAns: this.correctAnswers
+    })
+
+    this.selectQuestionType()
+
+    // console.log(this.options.at(index), 'hello')
+    // let tempVal = this.options.at(index)
+    // tempVal.setValue({text: tempVal.value,})
   }
-  
+
   addNewOption() {
     this.options.push(this.fb.control('', Validators.required))
   }
