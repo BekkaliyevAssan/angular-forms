@@ -7,16 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatorGeneralComponent implements OnInit {
   public questions = []
-  // formModel = {
-  //   title: '',
-  //   questionsArray: []
-  // }
-  // questionModel = {
-  //   question: '',
-  //   typeOfQuestion: '',
-  //   answers: [],
-  //   options: []
-  // }
+ 
   constructor() {
   }
 

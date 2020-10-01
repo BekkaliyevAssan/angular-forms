@@ -20,7 +20,7 @@
                 </label>
                 <div class="button-control">
                     <button [disabled]="options.length == 1" (click)="onDeleteOption(i)">Delete Option</button>
-                    <button (click)="onSelectCorrectAns(i)">Correct answer</button>
+                    <button [disabled]="options.at(i).value == ''" (click)="onSelectCorrectAns(i)">Correct answer</button>
                 </div>
             </div>
             <button (click)="addNewOption()" [disabled]="options.invalid">New option</button>

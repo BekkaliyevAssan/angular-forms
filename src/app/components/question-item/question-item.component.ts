@@ -32,10 +32,10 @@ export class QuestionItemComponent implements OnInit {
   onDeleteOption(index) {
     if (this.options.length > 1)
       this.options.removeAt(index)
-
+    //change type of question by removing index of correct answers while deleting the option  
     let _index = this.correctAnswers.indexOf(index);
     if (_index > -1) this.correctAnswers.splice(_index, 1);
-    // console.log(this.correctAnswers)
+
     this.selectQuestionType()
   }
 
