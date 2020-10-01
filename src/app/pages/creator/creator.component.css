@@ -1,0 +1,28 @@
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 10%;
+}
+.sidebar {
+    display: grid;
+    align-content: flex-start;
+}
+.sidebar_item {
+    height: 50px;
+    display: grid;
+    padding: 0 1rem;
+    align-items: center;
+    cursor: pointer;
+}
+.sidebar_item:not(.active):hover {
+    background: rgb(240, 240, 255);
+}
+.active {
+    background: rgb(216, 216, 255);
+    color: blue;
+}

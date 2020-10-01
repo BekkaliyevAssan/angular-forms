@@ -1,0 +1,13 @@
+<div class="wrapper">
+    <div class="title"><strong>1.</strong> Enter the form name</div>
+    <div class="input-item">
+        <input type="text" placeholder="Form name" name="title">
+    </div>
+</div>
+<div class="wrapper">
+    <div class="title"><strong>2.</strong> Create questions</div>
+        <app-question-item></app-question-item>
+    <div *ngFor="let q of questions">
+        <!-- <app-question-item></app-question-item> -->
+    </div>
+</div>

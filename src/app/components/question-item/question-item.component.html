@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <form [formGroup]="userProfile" (ngSubmit)="onSecondSubmit()">
+        <h3>Question</h3>
+        <label>
+            What is the question
+            <input type="text" formControlName="firstName">
+        </label>
+        <label>
+            Select type of the question
+            <select formControlName="questionType">
+                <option *ngFor="let option of questionTypes" [ngValue]="option">{{option}}</option>
+            </select>
+        </label>
+        <div formArrayName="options">
+            <h3>Answer options</h3>
+            <div *ngFor="let m of options.controls, let i = index">
+                <label>
+                    Option {{i + 1}}
+                    <input type="text" [formControlName]="i">
+                </label>
+                <div class="button-control">
+                    <button [disabled]="options.length == 1" (click)="onDeleteOption(i)">Delete Option</button>
+                    <button (click)="onSelectCorrectAns(i)">Correct answer</button>
+                </div>
+            </div>
+            <button (click)="addNewOption()" [disabled]="options.invalid">New option</button>
+        </div>
+        <button type="submit" [disabled]="userProfile.invalid">Submit</button>
+    </form>
+</div>
