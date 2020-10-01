@@ -1,11 +1,16 @@
+<form [formGroup]="questionsModel" (ngSubmit)="onSubmit()">
 <div class="wrapper">
     <div class="title"><strong>1.</strong> Enter the form name</div>
     <div class="input-item">
-        <input type="text" placeholder="Form name" name="title">
+        <input type="text" placeholder="Form name" formControlName="title">
     </div>
 </div>
 <div class="wrapper">
     <div class="title"><strong>2.</strong> Create questions</div>
-        <app-question-item></app-question-item>
-        
-</div>
+        <div *ngFor="let q of questions.controls; let i = index">
+            <app-question-item></app-question-item>
+        </div>
+        <button (click)="onAddQuestion()">Add question</button>
+        <button type="submit">Submit</button>    
+    </div>
+</form>

@@ -68,4 +68,5 @@ export class QuestionItemComponent implements OnInit {
   addNewOption() {
     this.options.push(this.fb.control('', Validators.required))
   }
+
 }
