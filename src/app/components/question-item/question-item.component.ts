@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormArray } from '@angular/forms'
+import { FormBuilder, FormArray, ControlContainer } from '@angular/forms'
 import { Validators } from '@angular/forms'
 @Component({
   selector: 'app-question-item',
@@ -7,26 +7,29 @@ import { Validators } from '@angular/forms'
   styleUrls: ['./question-item.component.css']
 })
 export class QuestionItemComponent implements OnInit {
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private controlContainer: ControlContainer) { }
   public questionTypes = ['multiple answers', 'one answer']
   public correctAnswers = []
-  userProfile = this.fb.group({
-    firstName: ['', Validators.required],
-    questionType: ['', Validators.required],
-    options: this.fb.array([
-      this.fb.control('', Validators.required)
-    ]),
-    correctAns: []
-  })
+
+  public ogFormGroup
+  // userProfile = this.fb.group({
+  //   firstName: ['', Validators.required],
+  //   questionType: ['', Validators.required],
+  //   options: this.fb.array([
+  //     this.fb.control('', Validators.required)
+  //   ]),
+  //   correctAns: []
+  // })
 
   ngOnInit(): void {
+    this.ogFormGroup = this.controlContainer.control;
   }
 
   onSecondSubmit() {
-    console.log(this.userProfile.value)
+    console.log(this.ogFormGroup.value)
   }
   get options() {
-    return this.userProfile.get('options') as FormArray
+    return this.ogFormGroup.get('options') as FormArray
   }
 
   onDeleteOption(index) {
@@ -41,11 +44,11 @@ export class QuestionItemComponent implements OnInit {
 
   selectQuestionType() {
     if (this.correctAnswers.length > 1) {
-      this.userProfile.patchValue({
+      this.ogFormGroup.patchValue({
         questionType: this.questionTypes[0]
       })
     } else {
-      this.userProfile.patchValue({
+      this.ogFormGroup.patchValue({
         questionType: this.questionTypes[1]
       })
     }
@@ -56,7 +59,7 @@ export class QuestionItemComponent implements OnInit {
 
       console.log(index)
       this.correctAnswers.push(index)
-      this.userProfile.patchValue({
+      this.ogFormGroup.patchValue({
         correctAns: this.correctAnswers
       })
       

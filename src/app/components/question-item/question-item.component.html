@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <form [formGroup]="userProfile" (ngSubmit)="onSecondSubmit()">
+    <form *ngIf="ogFormGroup" [formGroup]="ogFormGroup" (ngSubmit)="onSecondSubmit()">
         <h3>Question</h3>
         <label>
             What is the question

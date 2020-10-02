@@ -7,9 +7,11 @@
 </div>
 <div class="wrapper">
     <div class="title"><strong>2.</strong> Create questions</div>
+    <div formArrayName="questionList">
         <div *ngFor="let q of questions.controls; let i = index">
-            <app-question-item></app-question-item>
+            <app-question-item [formGroupName]="i"></app-question-item>
         </div>
+    </div>
         <button (click)="onAddQuestion()">Add question</button>
         <button type="submit">Submit</button>    
     </div>

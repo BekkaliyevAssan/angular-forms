@@ -8,19 +8,26 @@ import { Validators } from '@angular/forms'
 })
 export class CreatorGeneralComponent implements OnInit {
   // public questions = []
-  
+
   constructor(private fb: FormBuilder) {
   }
   questionsModel = this.fb.group({
     title: ['', Validators.required],
     questionList: this.fb.array([
-      this.fb.control('', Validators.required)
+      // this.fb.control('', Validators.required)
+      this.fb.group({
+        firstName: ['', Validators.required],
+        questionType: ['', Validators.required],
+        options: this.fb.array([
+          this.fb.control('', Validators.required)
+        ]),
+        correctAns: []
+      })
     ])
   })
-  
 
   get questions() {
-    return this.questionsModel.get('questionList') as FormArray 
+    return this.questionsModel.get('questionList') as FormArray
   }
 
   onAddQuestion() {
