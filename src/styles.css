@@ -17,3 +17,11 @@ input {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+select {
+    height: 50px;
+    display: grid;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    padding: 0 1rem;
+}

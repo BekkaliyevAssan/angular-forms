@@ -5,3 +5,16 @@
     font-size: 20px;
     padding-bottom: 1rem;
 }
+.questionList_item {
+    position: relative;
+}
+.questionList_item button {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+.button-group {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: auto auto 1fr;
+}

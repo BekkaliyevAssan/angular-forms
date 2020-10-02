@@ -7,6 +7,16 @@
 }
 .button-control {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto auto auto 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+}
+.wrapper-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-gap: 1rem;
+}
+.options_content {
+    display: grid;
     grid-gap: 1rem;
 }

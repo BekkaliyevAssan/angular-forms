@@ -10,7 +10,7 @@ export class QuestionItemComponent implements OnInit {
   constructor(private fb: FormBuilder, private controlContainer: ControlContainer) { }
   public questionTypes = ['multiple answers', 'one answer']
   public correctAnswers = []
-
+  @Input() order: number
   public ogFormGroup
   // userProfile = this.fb.group({
   //   firstName: ['', Validators.required],

@@ -1,29 +1,33 @@
 <div class="wrapper">
     <form *ngIf="ogFormGroup" [formGroup]="ogFormGroup" (ngSubmit)="onSecondSubmit()">
-        <h3>Question</h3>
-        <label>
-            What is the question
-            <input type="text" formControlName="firstName">
-        </label>
-        <label>
-            Select type of the question
-            <select formControlName="questionType" (change)="selectQuestionType()">
-                <option *ngFor="let option of questionTypes" [ngValue]="option">{{option}}</option>
-            </select>
-        </label>
+        <h3>Question #{{order}}</h3>
+        <div class="wrapper-top">
+            <label>
+                What is the question
+                <input type="text" formControlName="firstName">
+            </label>
+            <label>
+                Select type of the question
+                <select formControlName="questionType" (change)="selectQuestionType()">
+                    <option *ngFor="let option of questionTypes" [ngValue]="option">{{option}}</option>
+                </select>
+            </label>
+        </div>
         <div formArrayName="options">
             <h3>Answer options</h3>
-            <div *ngFor="let m of options.controls, let i = index">
-                <label>
-                    Option {{i + 1}}
-                    <input type="text" [formControlName]="i">
-                </label>
-                <div class="button-control">
-                    <button [disabled]="options.length == 1" (click)="onDeleteOption(i)">Delete Option</button>
-                    <button [disabled]="options.at(i).value == ''" (click)="onSelectCorrectAns(i)">Correct answer</button>
+            <div class="options_content">
+                <div *ngFor="let m of options.controls, let i = index">
+                    <label>
+                        Option {{i + 1}}
+                        <input type="text" [formControlName]="i">
+                    </label>
+                    <div class="button-control">
+                        <button (click)="addNewOption()" [disabled]="options.invalid">New option</button>
+                        <button [disabled]="options.length == 1" (click)="onDeleteOption(i)">Delete Option</button>
+                        <button [disabled]="options.at(i).value == ''" (click)="onSelectCorrectAns(i)">Correct answer</button>
+                    </div>
                 </div>
             </div>
-            <button (click)="addNewOption()" [disabled]="options.invalid">New option</button>
         </div>
         <!-- <button type="submit" [disabled]="userProfile.invalid">Submit</button> -->
     </form>

@@ -14,7 +14,6 @@ export class CreatorGeneralComponent implements OnInit {
   questionsModel = this.fb.group({
     title: ['', Validators.required],
     questionList: this.fb.array([
-      // this.fb.control('', Validators.required)
       this.fb.group({
         firstName: ['', Validators.required],
         questionType: ['', Validators.required],
@@ -30,6 +29,15 @@ export class CreatorGeneralComponent implements OnInit {
     return this.questionsModel.get('questionList') as FormArray
   }
 
+  get emptyFirstName(): boolean {
+    // return 
+    let tempQuesion = this.questions.value
+    if (tempQuesion[tempQuesion.length - 1].firstName == '' || !tempQuesion[tempQuesion.length - 1].correctAns) {
+      return true
+    }
+    else return false
+  }
+
   onAddQuestion() {
     this.questions.push(this.fb.group({
       firstName: ['', Validators.required],
@@ -39,13 +47,19 @@ export class CreatorGeneralComponent implements OnInit {
       ]),
       correctAns: []
     }))
+
+    
   }
 
   ngOnInit(): void {
   }
-
-  onSubmit() {
+    onSubmit() {
     console.log(this.questionsModel.value)
+  }
+
+  deleteQuestion(index) {
+    if (this.questions.length > 1)
+      this.questions.removeAt(index)
   }
 
 }

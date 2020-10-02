@@ -9,10 +9,15 @@
     <div class="title"><strong>2.</strong> Create questions</div>
     <div formArrayName="questionList">
         <div *ngFor="let q of questions.controls; let i = index">
-            <app-question-item [formGroupName]="i"></app-question-item>
+            <div class="questionList_item">
+                <app-question-item [order]="i + 1" [formGroupName]="i"></app-question-item>
+                <button [disabled]="questions.length < 2" (click)="deleteQuestion(i)">Delete question</button>
+            </div>
         </div>
     </div>
-        <button (click)="onAddQuestion()">Add question</button>
-        <button type="submit">Submit</button>    
+    <div class="button-group">
+        <button (click)="onAddQuestion()" [disabled]="emptyFirstName">Add question</button>
+        <button [disabled]="questionsModel.invalid" type="submit">Submit</button>    
+    </div>
     </div>
 </form>
