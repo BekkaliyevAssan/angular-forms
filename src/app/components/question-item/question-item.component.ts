@@ -12,14 +12,7 @@ export class QuestionItemComponent implements OnInit {
   public correctAnswers = []
   @Input() order: number
   public ogFormGroup
-  // userProfile = this.fb.group({
-  //   firstName: ['', Validators.required],
-  //   questionType: ['', Validators.required],
-  //   options: this.fb.array([
-  //     this.fb.control('', Validators.required)
-  //   ]),
-  //   correctAns: []
-  // })
+
 
   ngOnInit(): void {
     this.ogFormGroup = this.controlContainer.control;

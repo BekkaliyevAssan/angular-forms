@@ -1,0 +1,8 @@
+<div class="wrapper">
+    <div class="title">{{id}}</div>
+    <div class="content">
+        <div *ngFor="let f of form; let i = index">
+            <app-user-answer-card [f]="f" [i]="i"></app-user-answer-card>
+        </div>
+    </div>
+</div>

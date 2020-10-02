@@ -1,0 +1,31 @@
+<div class="content_item">
+        <div class="content_item__header">
+            <h3>Question #{{i + 1}}</h3>
+            {{f.questionType}}
+        </div>
+        <h2>
+            {{f.firstName}}
+        </h2>
+        <hr />
+        <div *ngIf="f.questionType == 'one answer'">
+            <div class="radio_list">
+                <div *ngFor="let o of f.options">
+                    <div class="radio_item">
+                        <input type="radio" name="{{f.firstName}}" value="{{o}}">
+                        <span>{{o}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //////// -->
+        <div *ngIf="f.questionType != 'one answer'">
+            <div class="radio_list">
+                <div *ngFor="let o of f.options">
+                    <div class="radio_item">
+                        <input type="checkbox" name="{{f.firstName}}" value="{{o}}">
+                        <span>{{o}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

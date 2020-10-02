@@ -1,0 +1,23 @@
+.content_item {
+    padding: 1rem;
+    background: #f0f0f0;
+}
+.content_item__header {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+}
+input {
+    height: 18px;
+}
+.radio_item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    grid-gap: 1rem;
+    align-items: center;
+}
+.radio_list {
+    display: grid;
+    grid-gap: 0.5rem;
+}

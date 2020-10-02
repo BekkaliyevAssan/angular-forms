@@ -11,6 +11,9 @@ import { CreatorComponent } from './pages/creator/creator.component';
 import { CreatorGeneralComponent } from './pages/creator-general/creator-general.component';
 import { SeeResultComponent } from './pages/see-result/see-result.component';
 import { QuestionItemComponent } from './components/question-item/question-item.component';
+import { MyFormsComponent } from './pages/my-forms/my-forms.component';
+import { FormDetailsComponent } from './pages/form-details/form-details.component';
+import { UserAnswerCardComponent } from './components/user-answer-card/user-answer-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { QuestionItemComponent } from './components/question-item/question-item.
     CreatorComponent,
     CreatorGeneralComponent,
     SeeResultComponent,
-    QuestionItemComponent
+    QuestionItemComponent,
+    MyFormsComponent,
+    FormDetailsComponent,
+    UserAnswerCardComponent
   ],
   imports: [
     BrowserModule,

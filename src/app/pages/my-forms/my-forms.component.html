@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <div class="title">List of created forms</div>
+    <div class="list">
+        <div *ngFor="let f of forms">
+            <div class="list-item" routerLink="/form/{{f.title}}">    
+                {{f.title}}
+            </div>
+        </div>
+    </div>
+</div>

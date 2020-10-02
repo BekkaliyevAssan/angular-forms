@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms'
 import { Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-creator-general',
   templateUrl: './creator-general.component.html',
@@ -9,7 +10,7 @@ import { Validators } from '@angular/forms'
 export class CreatorGeneralComponent implements OnInit {
   // public questions = []
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
   }
   questionsModel = this.fb.group({
     title: ['', Validators.required],
@@ -48,13 +49,18 @@ export class CreatorGeneralComponent implements OnInit {
       correctAns: []
     }))
 
-    
+
   }
 
   ngOnInit(): void {
   }
-    onSubmit() {
-    console.log(this.questionsModel.value)
+  onSubmit() {
+    let storageArray = JSON.parse(localStorage.getItem('listArray')) || []
+    storageArray.push(this.questionsModel.value)
+    localStorage.setItem('listArray', JSON.stringify(storageArray))
+
+    this.questionsModel.reset()
+    this.router.navigate(['creator/my-forms'])
   }
 
   deleteQuestion(index) {
