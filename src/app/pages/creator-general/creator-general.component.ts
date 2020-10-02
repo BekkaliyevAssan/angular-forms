@@ -31,7 +31,14 @@ export class CreatorGeneralComponent implements OnInit {
   }
 
   onAddQuestion() {
-    this.questions.push(this.fb.control('', Validators.required))
+    this.questions.push(this.fb.group({
+      firstName: ['', Validators.required],
+      questionType: ['', Validators.required],
+      options: this.fb.array([
+        this.fb.control('', Validators.required)
+      ]),
+      correctAns: []
+    }))
   }
 
   ngOnInit(): void {
